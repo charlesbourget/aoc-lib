@@ -171,3 +171,20 @@ func Intersect[T comparable](vs1 []T, vs2 []T) []T {
 		return Include(vs2, v)
 	})
 }
+
+func Contains[T comparable](vs1 []T, vs2 []T) bool {
+	return len(Intersect(vs1, vs2)) == MinInt(len(vs1), len(vs2))
+}
+
+func Overlaps[T comparable](vs1 []T, vs2 []T) bool {
+	return len(Intersect(vs1, vs2)) > 0
+}
+
+func Pop[T any](queue []T) ([]T, T) {
+	v := queue[0]
+	return queue[1:], v
+}
+
+func Enqueue[T any](queue []T, v T) []T {
+	return append(queue, v)
+}
