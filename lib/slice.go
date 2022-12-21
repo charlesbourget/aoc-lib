@@ -188,3 +188,13 @@ func Pop[T any](queue []T) ([]T, T) {
 func Enqueue[T any](queue []T, v T) []T {
 	return append(queue, v)
 }
+
+func Dequeue[T any](queue []T) ([]T, T) {
+	v := queue[len(queue)-1]
+	return queue[:len(queue)-2], v
+}
+
+func DequeueNum[T any](queue []T, num int) ([]T, []T) {
+	v := queue[len(queue)-num:]
+	return queue[:len(queue)-num], v
+}
